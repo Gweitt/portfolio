@@ -209,6 +209,10 @@ main h2 {
      display: none;
    }
 
+   .iconwrapper.mobilehidden {
+     display: none;
+   }
+  
    .iconsmobile {
      display: block;
    }
