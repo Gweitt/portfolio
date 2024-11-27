@@ -232,7 +232,7 @@ main h2 {
 
 @media only screen and (max-width: 450px) {
     #body {
-    margin-left: 10px;
+    margin-left: 15px;
     }
    .mobilehidden {
      display: none;
