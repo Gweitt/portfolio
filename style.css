@@ -225,8 +225,8 @@ main h2 {
 }
 
 @media only screen and (max-width: 450px) {
-      #body {
-      margin-left: 0;
+    #body {
+    margin-left: 0px;
     }
    .mobilehidden {
      display: none;
