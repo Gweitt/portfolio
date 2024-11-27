@@ -204,6 +204,26 @@ main h2 {
   height: auto;
 }
 
+.pathnumber1 {
+ animation: move 0.7s ease;
+ animation-fill-mode: forwards;
+ stroke-dasharray: 125.97027587890625;
+ stroke-dashoffset: 125.97027587890625;
+}
+
+.pathcircle {
+ animation: move 0.8s ease-in-out;
+ animation-fill-mode: forwards;
+ stroke-dasharray: 2022.939697265625;
+ stroke-dashoffset: 2022.939697265625;
+}
+
+  @keyframes move {
+  100% {
+      stroke-dashoffset: 0;
+  }
+}
+
 @media only screen and (max-width: 450px) {
    .mobilehidden {
      display: none;
@@ -357,19 +377,4 @@ main h2 {
      filter: grayscale(0%);
      background-color: #cab19a;
    }
-
-  .pathnumber1 {
- animation: move 0.7s ease;
- animation-fill-mode: forwards;
- stroke-dasharray: 125.97027587890625;
- stroke-dashoffset: 125.97027587890625;
-}
-
-.pathcircle {
- animation: move 0.8s ease-in-out;
- animation-fill-mode: forwards;
- stroke-dasharray: 2022.939697265625;
- stroke-dashoffset: 2022.939697265625;
-}
-
 }
