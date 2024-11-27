@@ -358,5 +358,18 @@ main h2 {
      background-color: #cab19a;
    }
 
+  .pathnumber1 {
+ animation: move 0.7s ease;
+ animation-fill-mode: forwards;
+ stroke-dasharray: 125.97027587890625;
+ stroke-dashoffset: 125.97027587890625;
+}
+
+.pathcircle {
+ animation: move 0.8s ease-in-out;
+ animation-fill-mode: forwards;
+ stroke-dasharray: 2022.939697265625;
+ stroke-dashoffset: 2022.939697265625;
+}
 
 }
