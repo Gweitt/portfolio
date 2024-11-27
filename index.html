@@ -20,6 +20,7 @@
         var x = document.getElementById("topnav");
         var y = document.getElementById("topnavout");
         var z = document.getElementById("arrow");
+        var a = document.getElementById("arrow2");
         if (x.className === "topnavclass") {
           x.className += " slide";
         } else {
@@ -39,7 +40,15 @@
           z.classList.remove("clicked");
           z.classList.add("unclicked");
         }
+        if (a.classList.contains("unclicked")) {
+          a.classList.remove("unclicked");
+          a.classList.add("clicked");
+        } else {
+          a.classList.remove("clicked");
+          a.classList.add("unclicked");
+        }
     }
+
     </script>
 
   <header>
@@ -86,7 +95,7 @@
        </ul>
        <div class="iconsmobile">
         <div id="hamburger" class="inmenumobile" onclick="navfunction ()">
-          <svg id="arrow" class="unclicked" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z"/><path d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z"/></svg>
+          <svg id="arrow2" class="unclicked rotatedown" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z"/><path d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z"/></svg>
         </div>
        <div class="iconwrapper">
        <img class="iconmenu" src="kontakt.svg" height="35" width="auto"></img>
