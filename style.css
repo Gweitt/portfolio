@@ -189,7 +189,7 @@ nav {
 main {
 
   max-width: 828px;
-  margin-left: 40px;
+  margin-left: 0;
   margin-top: 150px;
 }
 
@@ -300,7 +300,13 @@ main h2 {
 
 .svgwrapper svg {
   width: 60px;
+  z-index: 2;
+}
 
+.svgwrapper {
+  position: relative;
+  z-index: 2;
+  height: 60px;
 }
 
 .hltextwrapper  {
@@ -320,6 +326,25 @@ main h2 {
  animation-fill-mode: forwards;
  stroke-dasharray: 2022.939697265625;
  stroke-dashoffset: 2022.939697265625;
+}
+
+.svg-container {
+  width: 300px; /* Set desired size */
+  height: 300px;
+  position: relative;
+}
+
+.fill-anim {
+  animation: fillUp 0.5s ease-in-out 0.8s forwards;
+}
+
+@keyframes fillUp {
+  from {
+    y: 0%; /* Start outside of the circle */
+  }
+  to {
+    y: -100%; /* Fully reveal the circle */
+  }
 }
 
   @keyframes move {
