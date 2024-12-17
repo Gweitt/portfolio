@@ -54,6 +54,7 @@ header {
 nav {
   position: fixed;
   z-index: 999;
+  overscroll-behavior: none;
 }
 
 
