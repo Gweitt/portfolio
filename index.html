@@ -1,229 +1,167 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="cs" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=block" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="satoshi.css">
+    <link rel="stylesheet" href="buttons.css">
+
 
   </head>
 
 
   <body>
-    <script type="text/javascript">
-      function navfunction() {
-        var x = document.getElementById("topnav");
-        var y = document.getElementById("topnavout");
-        var z = document.getElementById("arrow");
-        var a = document.getElementById("arrow2");
-        if (x.className === "topnavclass") {
-          x.className += " slide";
-        } else {
-          x.className = "topnavclass";
-        }
-        if (y.classList.contains("hidden")) {
-          y.classList.remove("hidden");
-          y.classList.add("visible");
-        } else {
-          y.classList.remove("visible");
-          y.classList.add("hidden");
-        }
-        if (z.classList.contains("unclicked")) {
-          z.classList.remove("unclicked");
-          z.classList.add("clicked");
-        } else {
-          z.classList.remove("clicked");
-          z.classList.add("unclicked");
-        }
-        if (a.classList.contains("unclicked")) {
-          a.classList.remove("unclicked");
-          a.classList.add("clicked");
-        } else {
-          a.classList.remove("clicked");
-          a.classList.add("unclicked");
-        }
-    }
 
-    function hiddenhomepage() {
-      var x = document.getElementById("button-o-mne");
-      var z = document.getElementById("content");
-      if (x.classList.contains("visiblebtn")) {
-        x.classList.remove("visiblebtn");
-        x.classList.add("hiddenbtn");
-      }
-      if (z.classList.contains("hiddencontent")) {
-        z.classList.remove("hiddencontent");
-        z.classList.add("visiblecontent");
-      }
-  }
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+//tlačítko
+      const tlacitko = document.getElementById('button-dale');
+      const svgCesta = document.getElementById('buttonlineid');
+
+      const delkaCesty = svgCesta.getTotalLength();
+
+      svgCesta.style.strokeDasharray = delkaCesty;
+      svgCesta.style.strokeDashoffset = delkaCesty;
+
+      tlacitko.addEventListener('mouseenter', () => {
+      svgCesta.style.strokeDashoffset = '0';
+      });
+
+      tlacitko.addEventListener('mouseleave', () => {
+      svgCesta.style.strokeDashoffset = delkaCesty;
+      });
+//animace
+const observer = new IntersectionObserver((entries)=>{
+  const line1 = document.getElementById('line1');
+  const circle = document.getElementById('circleid');
+  entries.forEach((entry)=>{
+    if(entry.isIntersecting){
+      console.log(entry.target)
+
+      //entry.target.classList.add("show")
+    //  line1.classList.add("show")
+
+        if (entry.target.classList.contains('anim')){
+          line1.classList.add("show")
+        }
+        else if(entry.target.classList.contains('anim2')){
+          line1.classList.add("show2")
+    }
+        else if(entry.target.classList.contains('anim3')){
+          line1.classList.add("show3")
+
+        }
+
+    }
+  })
+}, {})
+
+const animElements = document.querySelectorAll(".anim, .anim2, .anim3")
+animElements.forEach(el => observer.observe(el))
+const delka = line1.getTotalLength();
+console.log(delka)
+
+});
 
     </script>
 
-  <header>
-    <div id="topnavout" class="hidden" onclick="navfunction()">
-    </div>
-    <nav class="topnavclass" id="topnav">
-      <div id="hamburger" class="inmenu mobilehidden" onclick="navfunction()">
-        <svg id="arrow" class="unclicked mobilehidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z"/><path d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z"/></svg>
-      </div>
-      <div class="menu">
+    <header>
 
+      <nav class="topnavclass" id="topnav">
+        <div class="menu">
+         <ul>
+           <li>
+             <a href="#">
+             <span>O mně</span>
+            </a>
+           </li>
+           <li>
+             <a href="#">
+            <span>Služby</span>
+             </a>
+           </li>
+          <li>
+             <a href="#">
+             <span>Kontakt</span>
+             </a>
+           </li>
+         </ul>
+         </div>
 
-       <ul>
-         <li>
-           <a href="#">
-           <span>Web</span>
-           <span class="kopie">Web</span>
-
-          </a>
-          <div class="iconwrapper mobilehidden">
-          <img class="iconmenu mobilehidden" src="kontakt.svg" height="35" width="auto"></img>
-          </div>
-         </li>
-
-         <li>
-           <a href="#">
-          <span>Graphics</span>
-           <span class="kopie">Graphics</span>
-
-           </a>
-           <div class="iconwrapper mobilehidden">
-           <img class="iconmenu" src="web.svg" height="35" width="auto"></img>
-           </div>
-         </li>
-        <li>
-           <a>
-           <span>Contact</span>
-           <span class="kopie">Contact</span>
-           </a>
-           <div class="iconwrapper mobilehidden">
-           <img class="iconmenu" src="design.svg" height="35" width="auto"></img>
-           </div>
-         </li>
-       </ul>
-       <div class="iconsmobile">
-        <div id="hamburger" class="inmenumobile" onclick="navfunction()">
-          <svg id="arrow2" class="unclicked rotatedown" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z"/><path d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z"/></svg>
-        </div>
-       <div class="iconwrapper">
-       <img class="iconmenu" src="kontakt.svg" height="35" width="auto"></img>
-       </div>
-       <div class="iconwrapper">
-       <img class="iconmenu" src="web.svg" height="35" width="auto"></img>
-       </div>
-       <div class="iconwrapper">
-       <img class="iconmenu" src="design.svg" height="35" width="auto"></img>
-       </div>
-
-       </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
   <div id="body">
-
+<div id="linewrapper">
+<svg  class="line" width="100%" height="100%" viewBox="0 0 3440 3942" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.5;">
+  <path id="line1" class="line1" d="M1743.45,309.573c7.484,-0 13.414,-6.077 13.414,-13.561c0,-7.485 -6.076,-13.562 -13.561,-13.562c-7.485,0 -13.561,6.077 -13.561,13.562c-0,7.484 6.119,13.561 13.604,13.561c-0,-0 -0,208.117 -0,208.117l1680.25,0l-0.022,657.482l-0,11.173c-0,-0 -13.424,1.092 -13.424,13.47c-0,12.378 11.358,13.689 13.543,13.689c2.184,-0 13.47,-2.112 13.47,-13.325c-0,-9.811 -8.084,-13.834 -13.589,-13.834c-6.727,-0 -13.424,5.61 -13.424,13.486c-0,5.56 3.923,13.673 13.466,13.673c0,3.416 -0.042,6.239 -0.042,6.239l0.022,790.579l-3407.86,0l0,823.112c0,-0 -13.424,1.092 -13.424,13.47c-0,12.378 11.359,13.688 13.543,13.688c2.184,0 13.47,-2.111 13.47,-13.324c0,-9.811 -8.084,-13.834 -13.589,-13.834c-6.727,-0 -13.424,5.61 -13.424,13.485c-0,5.56 3.923,13.673 13.467,13.673c-0,3.417 -0.043,6.24 -0.043,6.24l0,884.265l1798.36,-0l0,161.463c7.485,0 13.546,6.077 13.546,13.561c0,7.484 -6.076,13.56 -13.56,13.56c-7.484,0 -13.561,-6.076 -13.561,-13.56c0,-7.484 5.607,-13.561 13.091,-13.561" style="vector-effect: non-scaling-stroke;fill:none;stroke:#1e79aa;stroke-width:1px;"/></svg>
   <main>
-    <div id="wrappercenter">
-    <div id="button-o-mne" onclick="hiddenhomepage()" class="visiblebtn">
-      <span>test</span>
+    <div id="bodyhead">
+      <img class="logo" src="logo.svg" height="200" width="auto"></img>
+      <h1>Ing. Lucia Mrázková Ph.D.</h1>
+      <h2>Kybernetická bezpečnosť<br> a compliance</h2>
+      <div id="button-dale" class="button-main" onmouseover="">
+        <span>Dále</span>
+      </div>
+      <svg
+      class="buttonline"
+      width="100%"
+      height="100%"
+      viewBox="0 0 32 135"
+      xmlns="http://www.w3.org/2000/svg"
+      style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.5;">
+      <path id="buttonlineid" d="M15.946,-0.133l-0.357,106.021c-7.12,0 -12.901,5.781 -12.901,12.902c-0,7.12 5.781,12.901 12.901,12.901c7.121,0 12.902,-5.781 12.902,-12.901c-0,-7.121 -5.781,-12.902 -12.902,-12.902"
+      style="vector-effect: non-scaling-stroke;fill:none;stroke:#1e79aa;stroke-width:1px;"/>
+    </svg>
     </div>
-  </div>
-  <div id="content" class="hiddencontent">
-    <div class="hltextcelyblok">
-    <div class="svgwrapper">
-      <svg width="100%" height="100%" viewBox="0 0 653 653" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <g transform="matrix(9.89078,0,0,9.89078,-12106.3,-6703.16)">
-          <path class="pathnumber1 pathes" d="M1253.65,724.171L1253.65,697.414L1247.5,700.783L1247.5,695.192L1255.39,690.871L1260.32,690.871L1260.32,724.171L1265.79,724.171L1265.79,729.128L1247.72,729.128L1247.72,724.171L1253.65,724.171Z" style="fill-opacity:0;fill-rule:nonzero;stroke:black;stroke-width: 1px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,-848.263,-1318.56)">
-              <circle class="pathcircle pathes" cx="1174.49" cy="1644.78" r="322.091" style="fill:rgb(235,235,235);fill-opacity:0;stroke:black;stroke-width:8.27px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
-        </g>
-      </svg>
-    </div>
-    <div class="hltextwrapper">
-    <h2>Lorem ipsum</h2>
-    <p>Tento odstavec je testovací. Nemá smysl v něm smysl hledat. Je úplně nesmyslný z hlediska obsahu, zásadní je forma.</p>
+
+    <div id="O_mne">
+    <div class="wrapper">
+      <img src="portret.jpeg" alt="" height="300" width="auto">
+      <div class="textvertical">
+        <h3 class="anim">O mně</h3>
+        <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
+      </div>
     </div>
     </div>
 
-    <div class="hltextcelyblok">
-    <div class="svgwrapper">
-      <svg width="100%" height="100%" viewBox="0 0 653 653" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-
-    <g>
-
-      <defs>
-        <mask id="fillMask">
-          <!-- Mask background (fully white makes everything visible) -->
-          <rect x="0" y="0" width="100%" height="100%" fill="white" />
-          <!-- Animated rectangle that "reveals" the circle -->
-          <rect class="fill-anim" x="0" y="0%" width="100%" height="100%" fill="black" style="z-index: 1;"/>
-        </mask>
-      </defs>
-      <circle cx="326.5" cy="326.5" r="322" fill="black" mask="url(#fillMask)"  style="z-index: 1;"/>
-
-      <g transform="matrix(1,0,0,1,-848.263,-1318.56)">
-            <circle class="pathcircle pathes" cx="1174.49" cy="1644.78" r="322.091" style="fill:rgb(235,235,235);fill-opacity:0;stroke:black;stroke-width:8.27px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
-      </g>
-
-    </g>
-    <g transform="matrix(9.89078,0,0,9.89078,-12106.3,-6703.16)">
-      <path class="pathnumber1 pathes" d="M1253.65,724.171L1253.65,697.414L1247.5,700.783L1247.5,695.192L1255.39,690.871L1260.32,690.871L1260.32,724.171L1265.79,724.171L1265.79,729.128L1247.72,729.128L1247.72,724.171L1253.65,724.171Z" style="z-index: 2;fill-opacity:1;fill-rule:nonzero;fill:#c9ad93;stroke:black;stroke-width: 1px;"/>
-    </g>
-
-      </svg>
+    <div id="Sluzby">
+      <div id="sluzby_wrapper">
+        <div class="sluzby_block">
+          <h3>Maecenas</h3>
+          <p class="anim2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        </div>
+        <div class="sluzby_block">
+          <h3>Integer</h3>
+          <p>Etiam commodo dui eget wisi. Praesent vitae arcu tempor neque lacinia pretium. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Integer imperdiet lectus quis justo. Pellentesque pretium lectus id turpis.</p>
+        </div>
+        <div class="sluzby_block">
+          <h3> lacus</h3>
+          <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. In enim a arcu imperdiet malesuada. </p>
+        </div>
     </div>
-    <div class="hltextwrapper">
-    <h2>Lorem ipsum</h2>
-    <p>Tento odstavec je testovací. Nemá smysl v něm smysl hledat. Je úplně nesmyslný z hlediska obsahu, zásadní je forma.</p>
     </div>
     </div>
 
-    <div class="hltextcelyblok">
-    <div class="svgwrapper">
-      <svg width="100%" height="100%" viewBox="0 0 653 653" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <g transform="matrix(9.89078,0,0,9.89078,-12106.3,-6703.16)">
-          <path class="pathnumber1 pathes" d="M1253.65,724.171L1253.65,697.414L1247.5,700.783L1247.5,695.192L1255.39,690.871L1260.32,690.871L1260.32,724.171L1265.79,724.171L1265.79,729.128L1247.72,729.128L1247.72,724.171L1253.65,724.171Z" style="fill-opacity:0;stroke:black;stroke-width: 1px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,-848.263,-1318.56)">
-              <circle class="pathcircle pathes" cx="1174.49" cy="1644.78" r="322.091" style="fill:rgb(235,235,235);fill-opacity:0;stroke:black;stroke-width:8.27px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
-        </g>
-      </svg>
-    </div>
-    <div class="hltextwrapper">
-    <h2>Lorem ipsum</h2>
-    <p>Tento odstavec je testovací. Nemá smysl v něm smysl hledat. Je úplně nesmyslný z hlediska obsahu, zásadní je forma.</p>
+    <div id="konec">
+      <div id="konec_wrapper">
+
+      </div>
     </div>
     </div>
 
-    <div class="hltextcelyblok">
-    <div class="svgwrapper">
-      <svg width="100%" height="100%" viewBox="0 0 653 653" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <g transform="matrix(9.89078,0,0,9.89078,-12106.3,-6703.16)">
-          <path class="pathnumber1 pathes" d="M1253.65,724.171L1253.65,697.414L1247.5,700.783L1247.5,695.192L1255.39,690.871L1260.32,690.871L1260.32,724.171L1265.79,724.171L1265.79,729.128L1247.72,729.128L1247.72,724.171L1253.65,724.171Z" style="fill-opacity:0;fill-rule:nonzero;stroke:black;stroke-width: 1px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,-848.263,-1318.56)">
-              <circle class="pathcircle pathes" cx="1174.49" cy="1644.78" r="322.091" style="fill:rgb(235,235,235);fill-opacity:0;stroke:black;stroke-width:8.27px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
-        </g>
-      </svg>
-    </div>
-    <div class="hltextwrapper">
-    <h2>Lorem ipsum</h2>
-    <p>Tento odstavec je testovací. Nemá smysl v něm smysl hledat. Je úplně nesmyslný z hlediska obsahu, zásadní je forma.</p>
-    </div>
-    </div>
-
-  </div>
   </main>
 
   </div>
 
+<footer>
+<div class="pata">
+    <p class="anim3">© 2025 Lucia Mrázková Ph.D. – Všetky práva vyhradené</p>
+</div>
 
+</footer>
 
 
   </body>
