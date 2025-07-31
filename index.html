@@ -40,9 +40,6 @@ const observer = new IntersectionObserver((entries)=>{
     if(entry.isIntersecting){
       console.log(entry.target)
 
-      //entry.target.classList.add("show")
-    //  line1.classList.add("show")
-
         if (entry.target.classList.contains('anim')){
           line1.classList.add("show")
         }
